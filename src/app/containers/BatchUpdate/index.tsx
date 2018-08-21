@@ -1,10 +1,10 @@
-import { assignMentors, fetchAllCourses } from 'core/actions';
+import { fetchAllCourses } from 'core/actions';
 import { ICourse } from 'core/models';
 import { RootState } from 'core/reducers';
 import { classNames } from 'core/styles';
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { Card, CardBody, CardHeader } from 'reactstrap';
+import { Button, Card, CardBody, CardHeader } from 'reactstrap';
 
 const cn = classNames(require('./index.scss'));
 
@@ -21,16 +21,12 @@ const mapDispatchToProps = (dispatch: any, props: Props): Props => {
         fetchCourses: () => {
             dispatch(fetchAllCourses());
         },
-        assignMentors: (courseId: string) => {
-            dispatch(assignMentors(courseId));
-        },
     };
 };
 
 type Props = {
     courses: ICourse[];
     fetchCourses: () => void;
-    assignMentors: (courseId: string) => void;
 };
 
 class BatchUpdate extends React.Component<Props> {
@@ -48,13 +44,10 @@ class BatchUpdate extends React.Component<Props> {
                                 <h4>{course.name}</h4>
                             </CardHeader>
                             <CardBody>
-                                <div className="row">
-                                    <a
-                                        className={cn('btn btn-info', 'action-button')}
-                                        href={`/batchUpdate/${course._id}/import`}
-                                    >
-                                        import
-                                    </a>
+                                <div className="row mb-2">
+                                    <Button color="primary" className={cn('action-button')} onClick={() => course._id}>
+                                        Select xlsx
+                                    </Button>
                                 </div>
                             </CardBody>
                         </Card>
