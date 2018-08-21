@@ -4,7 +4,7 @@ import { RootState } from 'core/reducers';
 import { classNames } from 'core/styles';
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { Button, Card, CardBody, CardHeader } from 'reactstrap';
+import { Card, CardBody, CardHeader } from 'reactstrap';
 
 const cn = classNames(require('./index.scss'));
 
@@ -48,21 +48,12 @@ class BatchUpdate extends React.Component<Props> {
                                 <h4>{course.name}</h4>
                             </CardHeader>
                             <CardBody>
-                                <div className="row mb-2">
-                                    <Button
-                                        color="primary"
-                                        className={cn('action-button')}
-                                        onClick={() => this.props.assignMentors(course._id)}
-                                    >
-                                        Assign Mentors
-                                    </Button>
-                                </div>
                                 <div className="row">
                                     <a
                                         className={cn('btn btn-info', 'action-button')}
-                                        href={`/course/${course._id}/info`}
+                                        href={`/batchUpdate/${course._id}/import`}
                                     >
-                                        View Details
+                                        import
                                     </a>
                                 </div>
                             </CardBody>
