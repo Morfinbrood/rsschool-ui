@@ -102,6 +102,13 @@ class Header extends React.Component<Props, any> {
                                 </NavLink>
                             </li>
                         ) : null}
+                        {this.props.isAdmin ? (
+                            <li className="nav-item">
+                                <NavLink className="nav-link" to="/batchUpdate">
+                                    batchUpdate
+                                </NavLink>
+                            </li>
+                        ) : null}
                     </ul>
                 </div>
             </nav>
